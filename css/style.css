@@ -1,0 +1,46 @@
+:root {
+    --bgMain: #333333;
+    --bgSecondary: #black;
+    --bgNav: #1e1e2e;    ;
+    --White: #fff;
+}
+body {
+    background-color: var(--bgMain);
+    margin: 10px;
+    color: var(--White);
+}
+nav {
+    background-color: var(--bgNav);
+    text-align: center;
+    padding: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    
+}
+nav ul {
+    list-style: none;
+    display: inline;
+}
+nav li {
+    display: inline;
+    margin-right: 20px;
+}
+nav a {
+    text-decoration: none; /* Remove underline */
+    color: var(--White);
+}
+#status {
+    position: absolute;
+    right: 10px;
+    color: #fff;
+}
+footer {
+    background-color: var(--bgNav);
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--White);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
