@@ -5,10 +5,10 @@ $password = "";
 $dbname = "airlinev2";
 
 try {
+    // Connect to server
     $conn = new PDO("mysql:host=$servername", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Create db if not exists
     $createDBSQL = "CREATE DATABASE IF NOT EXISTS $dbname";
     $conn->exec($createDBSQL);
 
@@ -16,7 +16,7 @@ try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // tables 1 & 2
+    // tables 1 & 2 & 3
     $createTableSQL1 = "CREATE TABLE IF NOT EXISTS Kontenplan (
         KontoNr INT PRIMARY KEY,
         Bezeichnung VARCHAR(30) NOT NULL,
@@ -35,8 +35,15 @@ try {
     )";
     $conn->exec($createTableSQL2);
 
+    $createTableSQL3 = "CREATE TABLE IF NOT EXISTS Benutzer (
+        username VARCHAR(30) PRIMARY KEY,
+        password VARCHAR(30) NOT NULL
+    )";
+    $conn->exec($createTableSQL3);
+    
 } catch(PDOException $e) {
     echo "Fehler: " . $e->getMessage();
 }
-
+    // close connection (use connector.php !)
+    $conn = null;
 ?>

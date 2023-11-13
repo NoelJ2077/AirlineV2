@@ -1,15 +1,18 @@
 <?php
-include("db/createDB.php");
-include("db/status.php");
 
-// Bestimmen Sie den ausgewählten Navigationspunkt (z. B. durch eine URL-Variable)
+session_start();
+require("db/createDB.php");
+include("db/status.php");
+include("db/connector.php");
+
+// eg: http://localhost:8080/index.php?page=home
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
 } else {
     $page = "home";
 }
 
-// HTML Element : title und div class="content" für jeden Navigationspunkt
+// HTML Element : title / div class="content"
 switch ($page) {
     case "home":
         $pageTitle = "Home";
@@ -31,11 +34,14 @@ switch ($page) {
         $pageTitle = "Anmelden";
         $pageContent = "content/login.php";
         break;
+    case "logout":
+        $pageTitle = "Abmelden";
+        $pageContent = "content/logout.php";
+        break;
     default:
         $pageTitle = "Home";
         $pageContent = "content/home.php";
         break;
 }
-
 include("template.php");
 ?>

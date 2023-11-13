@@ -34,6 +34,12 @@ nav a {
     right: 10px;
     color: #fff;
 }
+#user {
+    position: absolute;
+    left: 10px;
+    color: #fff;
+    margin-left: 10px;
+}
 footer {
     background-color: var(--bgNav);
     text-align: center;
@@ -43,4 +49,44 @@ footer {
     bottom: 0;
     width: 100%;
 }
-
+.login,
+.logout {
+    width: 300px;
+    margin: 50px auto;
+    background-color: var(--bgNav);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.login input,
+.logout button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 110%;
+    background-color: #ccc;
+}
+.login button {
+    background-color: #4caf50;
+    color: #fff;
+    cursor: pointer;
+    font-size: 110%;
+}
+.logout button {
+    background-color: #f44336;
+    color: #fff;
+    cursor: pointer;
+}
+.login button:hover,
+.logout button:hover {
+    background-color: #45a049;
+}
+@media screen and (max-width: 600px) {
+    .login,
+    .logout {
+        width: 80%;
+    }
+}
