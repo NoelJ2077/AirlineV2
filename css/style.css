@@ -1,7 +1,7 @@
 :root {
     --bgMain: #333333;
     --bgSecondary: #black;
-    --bgNav: #1e1e2e;    ;
+    --bgNav: #1e1e2e;
     --White: #fff;
 }
 body {
@@ -14,8 +14,6 @@ nav {
     text-align: center;
     padding: 10px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    
-    
 }
 nav ul {
     list-style: none;
@@ -69,11 +67,19 @@ footer {
     font-size: 110%;
     background-color: #ccc;
 }
-.login button {
+.login button { /* Buttons "anmelden" & "registrieren" */
     background-color: #4caf50;
     color: #fff;
     cursor: pointer;
     font-size: 110%;
+    padding: 3px 25px 5px 25px;
+    margin-top: 15px;
+    margin-inline: 5px;
+}
+.login .button-container { /* Align both buttons to center */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .logout button {
     background-color: #f44336;

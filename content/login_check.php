@@ -19,7 +19,7 @@ function loginUser($username, $password) {
             exit();
         } else {
             // auth failed
-            echo "Anmeldung fehlgeschlagen!";
+            echo '<span style="color: red;">' . "Anmeldung fehlgeschlagen!" . '</span>';
         }
     } catch (PDOException $e) {
         echo "Fehler: " . $e->getMessage();
@@ -29,20 +29,20 @@ function registerUser($username, $password) {
     global $dbstatus;
 
     try {
-        // check if already exists
+        // check if already exists (column = 'username' : placeholder = ':username')
         $checkStmt = $dbstatus->prepare("SELECT * FROM Benutzer WHERE username = :username");
         $checkStmt->bindParam(':username', $username);
         $checkStmt->execute();
 
         if ($checkStmt->rowCount() > 0) {
-            echo "Benutzername bereits vergeben!";
+            echo '<span style="color: red;">' . "Benutzername bereits vergeben!" . '</span>';
         } else {
             // add user into db
             $insertStmt = $dbstatus->prepare("INSERT INTO Benutzer (username, password) VALUES (:username, :password)");
             $insertStmt->bindParam(':username', $username);
             $insertStmt->bindParam(':password', $password);
             $insertStmt->execute();
-            echo "Registrierung erfolgreich!";
+            echo '<span style="color: green;">' . "Registrierung erfolgreich!" . '</span>';
         }
     } catch (PDOException $e) {
         echo "Fehler: " . $e->getMessage();

@@ -34,9 +34,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <form class="login" method="post">
     <input type="text" name="username" placeholder="Benutzername" required>
     <input type="password" name="password" placeholder="Passwort" required>
-    <button type="submit" name="action" value="login">Anmelden</button>
-    <button type="submit" name="action" value="register">Registrieren</button>
+    <div class="button-container">
+        <button type="submit" name="action" value="login">Anmelden</button>
+        <button type="submit" name="action" value="register">Registrieren</button>
+    </div>
 </form>
 <form class="logout" method="post">
     <button type="submit" name="action" value="logout">Abmelden</button>
 </form>
+
