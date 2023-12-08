@@ -10,7 +10,32 @@ function status() {
     }
     return $statusText;
 }
-function loggedUser() {
+function loggedUser() { // get username linked to userid
+    global $dbstatus;
+    try {
+        $stmt = $dbstatus->prepare("SELECT username FROM Benutzer WHERE userID = :userID");
+        $stmt->bindParam(':userID', $_SESSION['userID']);
+        $stmt->execute();
+        // bind userid to username
+        $username = $stmt->fetch(PDO::FETCH_ASSOC);
+        $_SESSION["username"] = $username["username"];
+        
+    } catch (PDOException $e) {
+        echo "Fehler: " . $e->getMessage();
+    }
+    // print username
     return isset($_SESSION["username"]) ? '<span style="color: green;">'.$_SESSION["username"].'</span>' : '<span style="color: orange;">Nicht angemeldet</span>';
 }
+function checkLogin() { // prevent unauthorized access
+    try {
+        if (!isset($_SESSION['userID'])) {
+            header("Location: index.php?page=zgVerweigert");
+            exit();
+        }
+    }
+    catch (PDOException $e) {
+        echo "Fehler: " . $e->getMessage();
+    }
+}
+
 ?>

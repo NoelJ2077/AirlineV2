@@ -1,8 +1,16 @@
+/* Clear Chache if changes are not visible! 
+*
+*
+*/
 :root {
     --bgMain: #333333;
     --bgSecondary: #black;
     --bgNav: #1e1e2e;
     --White: #fff;
+    --BTlogin: #3498db;
+    --BTloginHover: #2980b9;
+    --BTlogout: #e74c3c;
+    --Border: #ccc;
 }
 body {
     background-color: var(--bgMain);
@@ -30,12 +38,12 @@ nav a {
 #status {
     position: absolute;
     right: 10px;
-    color: #fff;
+    color: var(--White);
 }
 #user {
     position: absolute;
     left: 10px;
-    color: #fff;
+    color: --White; /* Clear Chache when changing */
     margin-left: 10px;
 }
 footer {
@@ -48,51 +56,73 @@ footer {
     width: 100%;
 }
 .login,
+.register,
+.redirect, 
 .logout {
     width: 300px;
     margin: 50px auto;
     background-color: var(--bgNav);
-    padding: 20px;
+    padding: 40px;
+    border: 1px solid var(--Border);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .login input,
-.logout button {
+.register input,
+.logout button { /* Input fields, buttons & links */
     width: 100%;
     padding: 10px;
     margin-bottom: 5px;
     box-sizing: border-box;
-    border: 1px solid #ccc;
+    border: 1px solid var(--Border);
     border-radius: 4px;
     font-size: 110%;
-    background-color: #ccc;
+    background-color: var(--Border);
 }
-.login button { /* Buttons "anmelden" & "registrieren" */
-    background-color: #4caf50;
-    color: #fff;
+.login button,
+.register button,
+.redirectBT { /* Buttons "anmelden" & "registrieren" */
+    background-color: var(--BTlogin);
+    color: var(--White);
     cursor: pointer;
     font-size: 110%;
     padding: 3px 25px 5px 25px;
     margin-top: 15px;
     margin-inline: 5px;
 }
-.login .button-container { /* Align both buttons to center */
+.login .button-container,
+.register .button-container,
+.redirect .button-container { /* Align both buttons to center */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .logout button {
-    background-color: #f44336;
-    color: #fff;
+    background-color: var(--BTlogout);
+    color: var(--White);
     cursor: pointer;
 }
 .login button:hover,
-.logout button:hover {
-    background-color: #45a049;
+.register button:hover,
+.logout button:hover,
+.redirect a:hover {
+    background-color: var(--BTloginHover);
 }
 @media screen and (max-width: 600px) {
     .login,
+    .register,
     .logout {
         width: 80%;
     }
+}
+
+.redirect p { /* Text above */
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+/* home.php */
+.myAccount  {
+    font-size: 18px;
+    margin-bottom: 10px;
+    background-color: var(--bgSecondary);
 }

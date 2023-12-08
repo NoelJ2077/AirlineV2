@@ -38,6 +38,10 @@ switch ($page) {
         $pageTitle = "Abmelden";
         $pageContent = "content/logout.php";
         break;
+    case "zgVerweigert":
+        $pageTitle = "Der Zugriff wurde verweigert";
+        $pageContent = "content/zgVerweigert.php";
+        break;
     default:
         $pageTitle = "Home";
         $pageContent = "content/home.php";

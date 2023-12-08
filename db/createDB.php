@@ -16,7 +16,7 @@ try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // tables 1 & 2 & 3
+    // tables 1 & 2 & 3 'Kontenplan' & 'Hauptbuch' & 'Benutzer'
     $createTableSQL1 = "CREATE TABLE IF NOT EXISTS Kontenplan (
         KontoNr INT PRIMARY KEY,
         Bezeichnung VARCHAR(30) NOT NULL,
@@ -36,8 +36,10 @@ try {
     $conn->exec($createTableSQL2);
 
     $createTableSQL3 = "CREATE TABLE IF NOT EXISTS Benutzer (
-        username VARCHAR(30) PRIMARY KEY,
-        password VARCHAR(30) NOT NULL
+        email VARCHAR(30) PRIMARY KEY,
+        username VARCHAR(30) NOT NULL,
+        password VARCHAR(255) NOT NULL,
+        userID VARCHAR(255) NOT NULL /* hashing */
     )";
     $conn->exec($createTableSQL3);
     
