@@ -19,24 +19,22 @@ function loginUser($email, $password) {
                 // auth successful & put user data into session
                 $_SESSION['userID'] = $user['userID'];
                 $_SESSION['email'] = $user['email'];
+                $_SESSION['username'] = $user['username'];
+                $_SESSION['password'] = $user['password'];
                 // username is set in loggedUser()
                 header("Location: index.php?page=home");
                 exit();
             } else {
-                echo '<span style="color: red;">' . "Password verification failed!" . '</span>';
+                echo '<span style="color: orange;">' . "Falsches Passwort, bitte wiederholen!" . '</span>';
             }
         } else {
-            echo '<span style="color: red;">' . "User not found!" . '</span>';
+            echo '<span style="color: orange;">' . "Benutzer $email wurder nicht gefunden!" . '</span>';
         }
     } catch (PDOException $e) {
         // db errors
         echo "Fehler: " . $e->getMessage();
     }
 }
-
-
-
-
 
 function registerUser($username, $email, $password) {
     global $dbstatus;

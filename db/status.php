@@ -16,9 +16,6 @@ function loggedUser() { // get username linked to userid
         $stmt = $dbstatus->prepare("SELECT username FROM Benutzer WHERE userID = :userID");
         $stmt->bindParam(':userID', $_SESSION['userID']);
         $stmt->execute();
-        // bind userid to username
-        $username = $stmt->fetch(PDO::FETCH_ASSOC);
-        $_SESSION["username"] = $username["username"];
         
     } catch (PDOException $e) {
         echo "Fehler: " . $e->getMessage();
